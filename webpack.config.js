@@ -11,4 +11,15 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin(['index.html'])
   ],
+  experiments: {
+    asyncWebAssembly: true, // or syncWebAssembly: true
+},
+  module: {
+      rules: [
+          {
+              test: /\.wasm$/,
+              type: 'webassembly/async', // or 'webassembly/sync' if you chose syncWebAssembly
+          },
+      ],
+  },
 };
